@@ -1,0 +1,122 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Ticket Your Event</title>
+
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><!--Latest compiled and minified CSS-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- jQuery library -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script><!-- Latest compiled JavaScript -->
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+		<style type="text/css">
+			h1{
+				margin: 20px 0;
+				padding: 0 200px 5px 0;
+				border-bottom: 1px solid #E5E5E5;
+			}
+			.bs-example{
+				margin: 20px;
+			}
+
+		</style>
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	</head>
+	<body>
+		<div class="bs-example">
+			<h1>Sign Up</h1>
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="control-label col-xs-3" for="fname">First Name:</label>
+					<div class="col-xs-3">
+						<input type="text" class="form-control" id="fname" placeholder="First Name" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-xs-3" for="lname">Last Name:</label>
+					<div class="col-xs-3">
+						<input type="text" class="form-control" id="lname" placeholder="Last Name" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-xs-3" for="email">Email:</label>
+					<div class="col-xs-3">
+						<input type="email" class="form-control" id="email" placeholder="Email" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-xs-3" for="cmail">Confirm Email:</label>
+					<div class="col-xs-3">
+						<input type="email" class="form-control" id="cmail" placeholder="Confirm Email" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-xs-3" for="comName">Company Name:</label>
+					<div class="col-xs-3">
+						<input type="text" class="form-control" id="comName" placeholder="Company Nmae" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-xs-3" for="title">Event Title:</label>
+					<div class="col-xs-3">
+						<input type="text" class="form-control" id="title" placeholder="Event Title" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-xs-3" for="location">Venue name and Location:</label>
+					<div class="col-xs-3">
+						<input type="text" class="form-control" id="location" placeholder="Venue name and Location" required>
+					</div>
+				</div>
+
+				<!-- Radio Buttons for The Type Section -->
+				<div class="form-group" >
+					<label class="control-label col-xs-3" required>Type: </label>
+					<div class="col-xs-1">
+						<label class="radio-inline">
+							<input type="radio" name="type" value="Single"> Single Event
+						</label>
+					</div>
+					<div class="col-xs-1">
+						<label class="radio-inline">
+							<input type="radio" name="type" value="Multiple"> Multiple Event 
+						</label>
+					</div>
+					<div class="col-xs-1">
+						<label class="radio-inline">
+							<input type="radio" name="type" value="tour"> Tournment
+						</label>
+					</div>
+				</div>
+
+				<!-- Radio Buttons for The Inventory Section -->
+				<div class="form-group">
+					<label class="control-label col-xs-3" required>Inventory:</label>
+					<div class="col-xs-1">
+						<label class="radio-inline">
+							<input type="radio" name="inventory" value="general"> General Admission
+						</label>
+					</div>
+					<div class="col-xs-1">
+						<label class="radio-inline">
+							<input type="radio" name="inventory" value="reserved"> Reserved Admission 
+						</label>
+					</div>
+					<div class="col-xs-2">
+						<label class="radio-inline">
+							<input type="radio" name="inventory" value="gneralnreserved"> General Admission + Reserved Admission 
+						</label>
+					</div>
+				</div>
+	        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="reset" class="btn btn-default" value="Reset">
+            </div>
+        </div>
+</form>
+</div>
+</body>
+</html>
+
