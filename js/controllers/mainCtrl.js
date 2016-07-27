@@ -15,7 +15,11 @@ app.controller("mainCtrl" , function($scope){
 			value : "" ,
 			error : {bool : false , msg : ""}
 		} ;
-
+		customer.mobileNumber = 
+		{
+			value : "" ,
+			error : {bool : false , msg : ""}
+		} ;
 		customer.email = 
 		{
 			value : "" ,
