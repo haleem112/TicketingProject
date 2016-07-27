@@ -67,9 +67,12 @@
 				<div class="form-group">
 					<label class="control-label col-xs-3" for="cmail">Confirm Email:</label>
 					<div class="col-xs-3">
-						<input type="email" class="form-control" id="cmail" placeholder="Confirm Email" ng-model="customer.confirm.value" required>
+						<input type="email" class="form-control" id="cmail" placeholder="Confirm Email" ng-match="customer.confirm.value" required>
 					</div>
 				</div>
+<span data-ng-show="myForm.emailReg2.$error.match">Emails have to match!</span>
+
+
 				<div class="form-group">
 					<label class="control-label col-xs-3" for="comName">Company Name:</label>
 					<div class="col-xs-3">
