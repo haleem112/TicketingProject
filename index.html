@@ -12,22 +12,22 @@
 		<script type="text/javascript" src="js/app.js"></script>
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<style type="text/css">
-			h1{
-				margin: 20px 0;
-				padding: 0 200px 5px 0;
-				border-bottom: 1px solid #E5E5E5;
-			}
-			.bs-example{
-				margin: 20px;
-			}
+		h1{
+			margin: 20px 0;
+			padding: 0 200px 5px 0;
+			border-bottom: 1px solid #E5E5E5;
+		}
+		.bs-example{
+			margin: 20px;
+		}
 
-			.error {
-				color : red;
-				font-size : 12px;
-				font-family : arial;
-				margin : 0 ;
-				padding:  0 ;
-			}
+		.error {
+			color : red;
+			font-size : 12px;
+			font-family : arial;
+			margin : 0 ;
+			padding:  0 ;
+		}
 
 		</style>
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -40,7 +40,7 @@
 					<label class="control-label col-xs-3" for="fname">First Name:</label>
 					<div class="col-xs-3">
 						<input type="text" class="form-control" id="fname" placeholder="First Name" ng-model="customer.firstName.value" required>
-						<span id="helpBlock" class="help-block error" ng-show = "customer.firstName.error.bool">{{customer.firstName.error.msg}}</span>
+						<span id="helpBlock" class="help-block error" ng-show = "customer.firstName.error.bool ">{{customer.firstName.error.msg_length}} {{customer.firstName.error.msg_nreg}}</span>
 					</div>
 				</div>
 
@@ -48,29 +48,32 @@
 					<label class="control-label col-xs-3" for="lname">Last Name:</label>
 					<div class="col-xs-3">
 						<input type="text" class="form-control" id="lname" placeholder="Last Name" ng-model="customer.lastName.value" required>
+						<span id="helpBlock" class="help-block error" ng-show = "customer.lastName.error.bool ">{{customer.lastName.error.msg_length}} {{customer.lastName.error.msg_nreg}}</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-xs-3" for="mob">Mobile Number:</label>
 					<div class="col-xs-3">
-						<input type="text" class="form-control" id="mob" placeholder="Mobile Number" ng-model="customer.mobileNumber.value" ng-pattern ="/^[0-9]{1,7}$/" required>
-					    <span id="helpBlock" class="help-block error" ng-show = "form.mob.$error.pattern">{{customer.firstName.error.msg}}</span>
+						<input type="text" class="form-control" id="mob" placeholder="Mobile Number" ng-model="customer.mobileNumber.value"  required>
+						<span id="helpBlock" class="help-block error" ng-show = "customer.mobileNumber.error.bool">{{customer.mobileNumber.error.msg_emreg}}</span>
 
-				</div>
+					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-xs-3" for="email">Email:</label>
 					<div class="col-xs-3">
 						<input type="email" class="form-control" id="email" placeholder="Email" ng-model="customer.email.value" required>
+						<span id="helpBlock" class="help-block error" ng-show = "customer.email.error.bool ">{{customer.email.error.msg_emreg}}</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-xs-3" for="cmail">Confirm Email:</label>
 					<div class="col-xs-3">
-						<input type="email" class="form-control" id="cmail" placeholder="Confirm Email" ng-match="customer.confirm.value" required>
+						<input type="email" class="form-control" id="cmail" placeholder="Confirm Email" ng-model="customer.email2.value" required>
+						<span id="helpBlock" class="help-block error" ng-show = "customer.email2.error.bool ">{{customer.email2.error.msg}}</span>
 					</div>
 				</div>
-<span data-ng-show="myForm.emailReg2.$error.match">Emails have to match!</span>
+				<span data-ng-show="myForm.emailReg2.$error.match">Emails have to match!</span>
 
 
 				<div class="form-group">
@@ -89,6 +92,7 @@
 					<label class="control-label col-xs-3" for="location">Venue name and Location:</label>
 					<div class="col-xs-3">
 						<input type="text" class="form-control" id="location" placeholder="Venue name and Location"ng-model="customer.location.value" required>
+						<span id="helpBlock" class="help-block error" ng-show = "customer.location.error.bool ">{{customer.location.error.msg_1}} {{customer.location.error.msg_2}}</span>
 					</div>
 				</div>
 
@@ -131,20 +135,20 @@
 						</label>
 					</div>
 				</div>
-	        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-default" value="Reset" >
-            </div>
-        </div>
-</form>
-</div>
+				<div class="form-group">
+					<div class="col-xs-offset-3 col-xs-9">
+						<input type="submit" class="btn btn-primary" value="Submit">
+						<input type="reset" class="btn btn-default" value="Reset" >
+					</div>
+				</div>
+			</form>
+		</div>
 
-<!-- app.JS -- >
+		<!-- app.JS -- >
 
-<!-- main controller -->
-<script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
+		<!-- main controller -->
+		<script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
 
-</body>
-</html>
+	</body>
+	</html>
 
