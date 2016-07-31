@@ -1,4 +1,4 @@
-app.factory('fact1', function(){
+ var fact = app.factory('fact', function(){
 
 	return {
 		btn_disabled : function (customer)
@@ -76,7 +76,7 @@ app.factory('fact1', function(){
 			{
 				name.error.bool = false ;
 			}
-		} ,
+		},
 
 		checkReg : function (name , reg)
 		{

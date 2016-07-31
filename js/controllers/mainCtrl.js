@@ -1,4 +1,4 @@
-app.controller("mainCtrl" , function($scope , fact1)
+app.controller("mainCtrl" , function($scope , fact)
 {
 	//-----------------------Object to be sent-----------------------// 
 	var user = $scope.user = {
@@ -107,63 +107,62 @@ app.controller("mainCtrl" , function($scope , fact1)
 //-----------------------clicked copies the values of customer object to user object-----------------------//
 
 $scope.clicked = function(){ 
-fact1.create(customer,user) ;
-console.log(user) ;
+fact.create(customer,user) ;
 }
 //-----------------------Change submit button from disabled to enabled -----------------------//
 $scope.done = function (){
 
-	return fact1.btn_disabled(customer) ;
+	return fact.btn_disabled(customer) ;
 }
 
 //----------------------- Watchers -----------------------//
 	$scope.$watch ('customer.firstName' , function(val) 
 	{ 
-		fact1.validateInput (val, regex.name);
+		fact.validateInput (val, regex.name);
 		
 	}, true);
 
 	$scope.$watch ('customer.lastName' , function(val) 
 	{ 
-		fact1.validateInput (val,regex.name);
+		fact.validateInput (val,regex.name);
 		
 	}, true);
 
 	$scope.$watch ('customer.location' , function(val) 
 	{ 
-		fact1.validateInput (val,regex.location);
+		fact.validateInput (val,regex.location);
 		
 	}, true);
 
 	$scope.$watch ('customer.email' , function(val) 
 	{ 
-		fact1.checkReg (val,regex.email);
+		fact.checkReg (val,regex.email);
 		
 	}, true);
 
 	$scope.$watch ('customer.mobileNumber' , function(val) 
 	{ 
-		fact1.checkReg (val,regex.mobile);
+		fact.checkReg (val,regex.mobile);
 		
 	}, true);
 
 	$scope.$watch ('customer.confirmEmail' , function(val)
 	{
 
-		 	fact1.confirm (val , customer.email) ;
+		 	fact.confirm (val , customer.email) ;
 
 	},true) ;
 
 	$scope.$watch ('customer.companyName', function(val)
 	{
 
-			fact1.check_Length (val, regex.name)
+			fact.check_Length (val, regex.name)
 	},true);
 
 $scope.$watch ('customer.eventTitle', function(val)
 	{
 
-			fact1.check_Length (val, regex.name)
+			fact.check_Length (val, regex.name)
 	},true);
 
 
