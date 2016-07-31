@@ -2,31 +2,32 @@ app.factory('fact1', function(){
 
 	return {
 		btn_disabled : function (customer)
-		{
-			var done = customer.firstName.value && !customer.firstName.error.bool&&
-			customer.lastName.value && !customer.lastName.error.bool &&
-			customer.mobileNumber.value && !customer.mobileNumber.error.bool &&
-			customer.email.value && !customer.email.error.bool &&
-			customer.confirmEmail.value && !customer.confirmEmail.error.bool &&
-			customer.location.value && !customer.location.error.bool &&
-			customer.enenttitle.value && !customer.EnentTitle.error.bool &&
-			customer.eventType.value && !customer.eventType.error.bool &&
-			customer.inventory.value && !customer.inventory.error.bool &&
-			customer.companyName.value && !customer.companyName.error.bool ;
+        {
+                var finish = customer.firstName.value && !customer.firstName.error.bool&&
+                customer.lastName.value && !customer.lastName.error.bool &&
+                customer.mobileNumber.value && !customer.mobileNumber.error.bool &&
+                customer.location.value && !customer.location.error.bool &&
+                customer.eventTitle.value && !customer.eventTitle.error.bool &&
+                customer.email.value && !customer.email.error.bool &&
+                customer.confirmEmail.value && !customer.confirmEmail.error.bool &&
+                customer.eventType.value && !customer.eventType.error.bool &&
+                customer.inventory.value && !customer.inventory.error.bool&&
+                customer.companyName.value && !customer.companyName.error.bool;
 
-			return !done ;
-		},
+    return !finish ;
+        } ,
 
 		create : function (customer , user)
 		{
 			user.firstName    = customer.firstName.value ;
-			user.lastNAme     =customer.lastName.value ;
+			user.lastName     =customer.lastName.value ;
 			user.mobileNumber = customer.mobileNumber.value ;
 			user.email        = customer.email.value ;
 			user.eventTitle   = customer.eventTitle.value ;
 			user.location     = customer.location.value ;
 			user.eventType    = customer.eventType.value ;
 			user.inventory    = customer.inventory.value ;
+			user.companyName  = customer.companyName.value;
 
 			console.log(user) ;
 		} ,

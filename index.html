@@ -32,15 +32,15 @@
 			margin : 0 ;
 			padding:  0 ;
 		}
-		.control-label{
+		.form-horizontal .control-label{
 			/* text-align:right; */
-			text-align:right;
+			text-align:left;
 		}
 		</style>
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	</head>
 	<body ng-controller="mainCtrl">
-		<div class="panel panel-primary col-md-12">
+		<div class="panel panel-primary col-md-8 col-md-offset-2">
 			
 			<!-- Default panel contents -->
 			<div class="panel-heading">Ticket Your Event</div>
@@ -49,7 +49,7 @@
 					<form class="form-horizontal" role="form" name="form">
 						<div class="form-group">
 							<label class="control-label col-xs-3" for="fname">First Name:</label>
-							<div class="col-xs-3">
+							<div class="col-xs-6">
 								<input type="text" class="form-control" id="fname" placeholder="First Name" ng-model="customer.firstName.value" required>
 								<span id="helpBlock" class="help-block error" ng-show = "customer.firstName.error.bool "><div class = "alert alert-danger">{{customer.firstName.error.length_msg}} {{customer.firstName.error.nameregex_msg}}</div></span>
 							</div>
@@ -57,7 +57,7 @@
 						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 						<div class="form-group">
 							<label class="control-label col-xs-3" for="lname">Last Name:</label>
-							<div class="col-xs-3">
+							<div class="col-xs-6">
 								<input type="text" class="form-control" id="lname" placeholder="Last Name" ng-model="customer.lastName.value" required>
 								<span id="helpBlock" class="help-block error" ng-show = "customer.lastName.error.bool "><div class = "alert alert-danger">{{customer.lastName.error.length_msg}} {{customer.lastName.error.nameregex_msg}}</div></span>
 							</div>
@@ -66,7 +66,7 @@
 
 						<div class="form-group">
 							<label class="control-label col-xs-3" for="mob">Mobile Number:</label>
-							<div class="col-xs-3">
+							<div class="col-xs-6">
 								<div class="input-group">
                              <div class="input-group-addon">+20</div>
 								<input type="text" class="form-control" id="mob" placeholder="Mobile Number" ng-model="customer.mobileNumber.value"  required>
@@ -78,7 +78,7 @@
 						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->		
 						<div class="form-group">
 							<label class="control-label col-xs-3" for="email">Email:</label>
-							<div class="col-xs-3">
+							<div class="col-xs-6">
 								<input type="text" class="form-control" id="email" placeholder="Email" ng-model="customer.email.value" required>
 								<span id="helpBlock" class="help-block error" ng-show = "customer.email.error.bool "><div class = "alert alert-danger">{{customer.email.error.emailmobilereg_msg}}</div></span>
 							</div>
@@ -86,7 +86,7 @@
 						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 						<div class="form-group">
 							<label class="control-label col-xs-3" for="cmail">Confirm Email:</label>
-							<div class="col-xs-3 ">
+							<div class="col-xs-6">
 								<input type="text" class="form-control" id="cmail" placeholder="Confirm Email" ng-model="customer.confirmEmail.value" required>
 								<span id="helpBlock" class="help-block error" ng-show = "customer.confirmEmail.error.bool "><div class = "alert alert-danger">{{customer.confirmEmail.error.msg}}</div></span>
 							</div>
@@ -94,7 +94,7 @@
 						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 						<div class="form-group">
 							<label class="control-label col-xs-3" for="comName">Company Name:</label>
-							<div class="col-xs-3">
+							<div class="col-xs-6">
 								<input type="text" class="form-control" id="comName" placeholder="Company Name" ng-model="customer.companyName.value" required>
 								<span id="helpBlock" class="help-block error" ng-show = "customer.companyName.error.bool"><div class = "alert alert-danger">{{customer.companyName.error.length_msg}}</div></span>
 							</div>
@@ -102,7 +102,7 @@
 						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 						<div class="form-group">
 							<label class="control-label col-xs-3" for="title">Event Title:</label>
-							<div class="col-xs-3">
+							<div class="col-xs-6">
 								<input type="text" class="form-control" id="title" placeholder="Event Title" ng-model="customer.eventTitle.value" required>
 								<span id="helpBlock" class="help-block error" ng-show = "customer.eventTitle.error.bool"> <div class = "alert alert-danger">{{customer.eventTitle.error.length_msg}}</div></span>
 							</div>
@@ -110,7 +110,7 @@
 						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->		
 						<div class="form-group">
 							<label class="control-label col-xs-3" for="location">Venue name and Location:</label>
-							<div class="col-xs-3">
+							<div class="col-xs-6">
 								<input type="text" class="form-control" id="location" placeholder="Venue name and Its Location"ng-model="customer.location.value" required>
 								<span id="helpBlock" class="help-block error" ng-show = "customer.location.error.bool ">
 									<div class = "alert alert-danger">{{customer.location.error.length_msg}} {{customer.location.error.nameregex_msg}}</div></span>
@@ -120,17 +120,17 @@
 							<!-- Radio Buttons for The Type Section -->
 							<div class="form-group" >
 								<label class="control-label col-xs-3">Type: </label>
-								<div class="col-xs-1">
+								<div class="col-xs-2">
 									<label class="radio-inline">
 										<input type="radio" name="type" value="Single" ng-model="customer.eventType.value" required > Single Event
 									</label>
 								</div>
-								<div class="col-xs-1">
+								<div class="col-xs-2">
 									<label class="radio-inline">
 										<input type="radio" name="type" value="Multiple" ng-model="customer.eventType.value" required> Multiple Event 
 									</label>
 								</div>
-								<div class="col-xs-1">
+								<div class="col-xs-2">
 									<label class="radio-inline">
 										<input type="radio" name="type" value="tour" ng-model="customer.eventType.value" required> Tournment
 									</label>
@@ -140,12 +140,12 @@
 							<!-- Radio Buttons for The Inventory Section -->
 							<div class="form-group">
 								<label class="control-label col-xs-3">Inventory:</label>
-								<div class="col-xs-1">
+								<div class="col-xs-2">
 									<label class="radio-inline">
 										<input type="radio" name="inventory" value="general" ng-model="customer.inventory.value" required> General Admission
 									</label>
 								</div>
-								<div class="col-xs-1">
+								<div class="col-xs-2">
 									<label class="radio-inline">
 										<input type="radio" name="inventory" value="reserved" ng-model="customer.inventory.value"> Reserved Admission 
 									</label>
@@ -159,7 +159,7 @@
 							<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 							<div class="form-group">
 								<div class="col-xs-offset-3 col-xs-9">
-									<input type="submit" class="btn btn-primary" value="Submit" ng-click ="clicked()" ng-disabled = "done">
+									<input type="submit" class="btn btn-primary" value="Submit" ng-click ="clicked()" ng-disabled = "done()">
 
 									<input type="reset" class="btn btn-default" value="Reset" >
 								</div>

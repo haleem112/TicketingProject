@@ -1,17 +1,18 @@
 app.controller("mainCtrl" , function($scope , fact1)
 {
+	//-----------------------Object to be sent-----------------------// 
 	var user = $scope.user = {
         firstName : "" ,
         lastName : "" ,
         mobileNumber : "" ,
         email : "" ,
         companyName : "" ,
-        evetTitle : "" ,
+        eventTitle : "" ,
         location : "" ,
         eventType : "" ,
         inventory : ""
     };
-//-----------------------Customer Object-----------------------//
+  //-----------------------Customer Object-----------------------//
 	var customer = $scope.customer = {};
 
 	customer.firstName = 
@@ -75,7 +76,6 @@ app.controller("mainCtrl" , function($scope , fact1)
 	//-----------------------Regex Object-----------------------//
 	
 	var regex = $scope.regex = {} ;
-
 	regex =
 	{ 
 		name :
@@ -104,9 +104,16 @@ app.controller("mainCtrl" , function($scope , fact1)
 		}
 	};
 
+//-----------------------clicked copies the values of customer object to user object-----------------------//
 
-$scope.clicked = function (){
-	console.log(customer) ;
+$scope.clicked = function(){ 
+fact1.create(customer,user) ;
+console.log(user) ;
+}
+//-----------------------Change submit button from disabled to enabled -----------------------//
+$scope.done = function (){
+
+	return fact1.btn_disabled(customer) ;
 }
 
 //----------------------- Watchers -----------------------//
@@ -159,10 +166,7 @@ $scope.$watch ('customer.eventTitle', function(val)
 			fact1.check_Length (val, regex.name)
 	},true);
 
-$scope.clicked = function(){ 
-fact1.create(customer,user) ;
-}
 
-$scope.done = fact1.btn_disabled(customer) ;
+
 
 });
