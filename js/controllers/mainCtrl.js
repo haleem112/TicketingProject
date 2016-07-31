@@ -1,30 +1,39 @@
-//var app = angular.module("app" , []) ;
 app.controller("mainCtrl" , function($scope , fact1)
 {
-
-
+	var user = $scope.user = {
+        firstName : "" ,
+        lastName : "" ,
+        mobileNumber : "" ,
+        email : "" ,
+        companyName : "" ,
+        evetTitle : "" ,
+        location : "" ,
+        eventType : "" ,
+        inventory : ""
+    };
+//-----------------------Customer Object-----------------------//
 	var customer = $scope.customer = {};
 
 	customer.firstName = 
 	{
 		value : "" ,
-		error : {bool : false , msg_length : "" , msg_nreg : "" }
+		error : {bool : false , length_msg : "" , nameregex_msg : "" }
 	} ;
 
 	customer.lastName = 
 	{
 		value : "" ,
-		error : {bool : false ,  msg_length : "" , msg_nreg : ""}
+		error : {bool : false ,  length_msg : "" , nameregex_msg : ""}
 	} ;
 	customer.mobileNumber = 
 	{
 		value : "" ,
-		error : {bool : false , msg_emreg : ""}
+		error : {bool : false , emailmobilereg_msg : ""}
 	} ;
 	customer.email = 
 	{
 		value : "" ,
-		error : {bool : false , msg_emreg : ""}
+		error : {bool : false , emailmobilereg_msg : ""}
 	} ;
 
 	customer.confirmEmail = 
@@ -36,19 +45,19 @@ app.controller("mainCtrl" , function($scope , fact1)
 	customer.companyName = 
 	{
 		value : "" ,
-		error : {bool : false , msg : ""}
+		error : {bool : false , length_msg : ""}
 	} ;
 
-	customer.evetTitle = 
+	customer.eventTitle = 
 	{
 		value : "" ,
-		error : {bool : false , msg : ""}
+		error : {bool : false , length_msg : ""}
 	} ;
 
 	customer.location = 
 	{
 		value : "" ,
-		error : {bool : false , msg_length : "" , msg_nreg : ""}
+		error : {bool : false , length_msg : "" , nameregex_msg : ""}
 	} ;
 
 	customer.eventType = 
@@ -63,7 +72,7 @@ app.controller("mainCtrl" , function($scope , fact1)
 		error : {bool : false , msg : ""}
 	} ;
 
-	//---------------Regex Object---------------//
+	//-----------------------Regex Object-----------------------//
 	
 	var regex = $scope.regex = {} ;
 
@@ -72,7 +81,7 @@ app.controller("mainCtrl" , function($scope , fact1)
 		name :
 		{
 			exp    : /^[a-zA-Z\-\']+$/ ,
-			error : "Names must contain only characters , - or '" ,
+			error : "Input must contain only [letters] [,] [-] [']" ,
 			min : 3 ,
 			max : 15 
 		},
@@ -84,118 +93,23 @@ app.controller("mainCtrl" , function($scope , fact1)
 		location :
 		{
 			exp :/^[a-zA-Z0-9\-\.\, ]+$/ , 
-			error : "Names must contain only Numbers , letters , - , . or  ," ,
+			error : "Input must contain only [Numbers] [letters] [,] [-] [.]" ,
 			min : 15 , 
 			max : 50
 		},
 		mobile :
 		{
 			exp :  /^[1]+[0-2][-]*(\d{4})[-]*(\d{4})$/ ,
-			error : "Invalid number"
+			error : "Invalid mobile number"
 		}
 	};
 
 
+$scope.clicked = function (){
+	console.log(customer) ;
+}
 
-
-	/*$scope.validateInput = function(name , reg)
-	{
-
-		if (name.value) 
-		{
-			var test = reg.exp.test(name.value) ;
-			var length = name.value.length;
-
-			if(test)
-			{
-				name.error.bool= false ;
-				name.error.msg_nreg = "";
-			}
-			else
-			{
-				name.error.bool = true ;
-				name.error.msg_nreg =reg.error;
-			}
-
-			
-			if (length >0 && length < reg.min)
-			{
-				name.error.bool = true;
-				name.error.msg_length= "must be more than "+reg.min+" characters";
-			}
-
-			else if (length > reg.max)
-			{
-				name.error.bool = true;
-				name.error.msg_length = "must be more than "+reg.max+" characters";
-			}
-
-			else 
-			{
-				name.error.msg_length = "" ;
-			}
-			
-
-		}
-		else
-		{
-			name.error.bool = false ;
-		}
-	};
-*/
-	/*$scope.checkReg = function(name , reg) {
-
-		if (name.value) 
-		{
-			var test = reg.exp.test(name.value) ;
-
-
-			if(test)
-			{
-				name.error.bool= false ;
-				name.error.msg_emreg = "";
-			}
-			else
-			{
-				name.error.bool = true ;
-				name.error.msg_emreg =reg.error;
-			}
-		}
-		else 
-		{
-			name.error.bool = false ;
-			name.error.msg_emreg = "";
-		}
-
-
-	} ;*/
-
-/*	$scope.confirm = function(mail , mconfirm)
-	{
-
-		if(mail.value)
-		{
-			if (mail.value == mconfirm.value )
-			{
-				mail.error.bool = false ;
-				mail.error.msg = "" ;
-			}
-			else
-			{
-				mail.error.bool = true ;
-				mail.error.msg = "they are not matched" ;
-			}
-		} 
-		else {
-			mail.error.bool = false ;
-			mail.error.msg = "" ;
-		}
-		
-	};*/
-
-
-
-	//---------------Watchers---------------//
+//----------------------- Watchers -----------------------//
 	$scope.$watch ('customer.firstName' , function(val) 
 	{ 
 		fact1.validateInput (val, regex.name);
@@ -233,6 +147,22 @@ app.controller("mainCtrl" , function($scope , fact1)
 
 	},true) ;
 
+	$scope.$watch ('customer.companyName', function(val)
+	{
 
+			fact1.check_Length (val, regex.name)
+	},true);
+
+$scope.$watch ('customer.eventTitle', function(val)
+	{
+
+			fact1.check_Length (val, regex.name)
+	},true);
+
+$scope.clicked = function(){ 
+fact1.create(customer,user) ;
+}
+
+$scope.done = fact1.btn_disabled(customer) ;
 
 });
