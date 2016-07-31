@@ -27,7 +27,7 @@ app.controller("mainCtrl" , function($scope)
 		error : {bool : false , msg_emreg : ""}
 	} ;
 
-	customer.email2 = 
+	customer.confirmEmail = 
 	{
 		value : "" ,
 		error : {bool : false , msg : ""}
@@ -78,7 +78,7 @@ app.controller("mainCtrl" , function($scope)
 		},
 		email :
 		{
-			exp : /^[A-Z0-9._%+-]+@[a-z0-9]+[.]+[A-Z]{1,4}[.]*[A-Z.]*[a-z]{2,4}$/i, 
+			exp : /^[A-Z0-9._%+-]+@[a-z0-9]+[.]+[A-Z]{2,4}[.]*[A-Z.]*[a-z]{2,4}$/i, 
 			error: "Invalid Email" 
 		},
 		location :
@@ -170,13 +170,11 @@ app.controller("mainCtrl" , function($scope)
 
 	} ;
 
-	$scope.confirmEmail = function(mail , mconfirm)
+	$scope.confirm = function(mail , mconfirm)
 	{
-		//if (name.value)
-		//{
-			console.log(mail);
-			if(mail.value)
-			{
+
+		if(mail.value)
+		{
 			if (mail.value == mconfirm.value )
 			{
 				mail.error.bool = false ;
@@ -187,17 +185,12 @@ app.controller("mainCtrl" , function($scope)
 				mail.error.bool = true ;
 				mail.error.msg = "they are not matched" ;
 			}
-		} else {
+		} 
+		else {
 			mail.error.bool = false ;
-				mail.error.msg = "" ;
+			mail.error.msg = "" ;
 		}
-		/*}
-		else 
-	{
-			name.error.bool = false ;
-			name.error.msg = "" ;
-			console.log(name.value);
-		}*/
+		
 	};
 
 
@@ -233,12 +226,12 @@ app.controller("mainCtrl" , function($scope)
 		
 	}, true);
 
-	$scope.$watch ('customer.email2' , function(val)
+	$scope.$watch ('customer.confirmEmail' , function(val)
 	{
-		// if(customer.confirm) {
-		// 	$scope.confirm (customer.confirm , customer.email) ;
-		// }
-		console.log(customer.email2);
+		
+		 	$scope.confirm (val , customer.email) ;
+		
+		
 		
 	},true) ;
 

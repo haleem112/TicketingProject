@@ -62,19 +62,17 @@
 				<div class="form-group">
 					<label class="control-label col-xs-3" for="email">Email:</label>
 					<div class="col-xs-3">
-						<input type="email" class="form-control" id="email" placeholder="Email" ng-model="customer.email.value" required>
+						<input type="text" class="form-control" id="email" placeholder="Email" ng-model="customer.email.value" required>
 						<span id="helpBlock" class="help-block error" ng-show = "customer.email.error.bool ">{{customer.email.error.msg_emreg}}</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-xs-3" for="cmail">Confirm Email:</label>
 					<div class="col-xs-3">
-						<input type="email" class="form-control" id="cmail" placeholder="Confirm Email" ng-model="customer.email2.value" required>
-						<span id="helpBlock" class="help-block error" ng-show = "customer.email2.error.bool ">{{customer.email2.error.msg}}</span>
+						<input type="text" class="form-control" id="cmail" placeholder="Confirm Email" ng-model="customer.confirmEmail.value" required>
+						<span id="helpBlock" class="help-block error" ng-show = "customer.confirmEmail.error.bool ">{{customer.confirmEmail.error.msg}}</span>
 					</div>
 				</div>
-				<span data-ng-show="myForm.emailReg2.$error.match">Emails have to match!</span>
-
 
 				<div class="form-group">
 					<label class="control-label col-xs-3" for="comName">Company Name:</label>
@@ -92,36 +90,36 @@
 					<label class="control-label col-xs-3" for="location">Venue name and Location:</label>
 					<div class="col-xs-3">
 						<input type="text" class="form-control" id="location" placeholder="Venue name and Location"ng-model="customer.location.value" required>
-						<span id="helpBlock" class="help-block error" ng-show = "customer.location.error.bool ">{{customer.location.error.msg_1}} {{customer.location.error.msg_2}}</span>
+						<span id="helpBlock" class="help-block error" ng-show = "customer.location.error.bool ">{{customer.location.error.msg_length}} {{customer.location.error.msg_nreg}}</span>
 					</div>
 				</div>
 
 				<!-- Radio Buttons for The Type Section -->
 				<div class="form-group" >
-					<label class="control-label col-xs-3" required>Type: </label>
+					<label class="control-label col-xs-3">Type: </label>
 					<div class="col-xs-1">
 						<label class="radio-inline">
-							<input type="radio" name="type" value="Single" ng-model="customer.eventType.value"> Single Event
+							<input type="radio" name="type" value="Single" ng-model="customer.eventType.value" required > Single Event
 						</label>
 					</div>
 					<div class="col-xs-1">
 						<label class="radio-inline">
-							<input type="radio" name="type" value="Multiple" ng-model="customer.eventType.value"> Multiple Event 
+							<input type="radio" name="type" value="Multiple" ng-model="customer.eventType.value" required> Multiple Event 
 						</label>
 					</div>
 					<div class="col-xs-1">
 						<label class="radio-inline">
-							<input type="radio" name="type" value="tour" ng-model="customer.eventType.value"> Tournment
+							<input type="radio" name="type" value="tour" ng-model="customer.eventType.value" required> Tournment
 						</label>
 					</div>
 				</div>
 
 				<!-- Radio Buttons for The Inventory Section -->
 				<div class="form-group">
-					<label class="control-label col-xs-3" required>Inventory:</label>
+					<label class="control-label col-xs-3">Inventory:</label>
 					<div class="col-xs-1">
 						<label class="radio-inline">
-							<input type="radio" name="inventory" value="general" ng-model="customer.inventory.value"> General Admission
+							<input type="radio" name="inventory" value="general" ng-model="customer.inventory.value" required> General Admission
 						</label>
 					</div>
 					<div class="col-xs-1">
@@ -147,6 +145,7 @@
 		<!-- app.JS -- >
 
 		<!-- main controller -->
+		<script type="text/javascript" src="js/controllers/factories.js"></script>
 		<script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
 
 	</body>

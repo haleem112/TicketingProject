@@ -1,5 +1,5 @@
 //var app = angular.module("app" , []) ;
-app.controller("mainCtrl" , function($scope)
+app.controller("mainCtrl" , function($scope , fact1)
 {
 
 
@@ -27,7 +27,7 @@ app.controller("mainCtrl" , function($scope)
 		error : {bool : false , msg_emreg : ""}
 	} ;
 
-	customer.email2 = 
+	customer.confirmEmail = 
 	{
 		value : "" ,
 		error : {bool : false , msg : ""}
@@ -98,7 +98,7 @@ app.controller("mainCtrl" , function($scope)
 
 
 
-	$scope.validateInput = function(name , reg)
+	/*$scope.validateInput = function(name , reg)
 	{
 
 		if (name.value) 
@@ -142,8 +142,8 @@ app.controller("mainCtrl" , function($scope)
 			name.error.bool = false ;
 		}
 	};
-
-	$scope.checkReg = function(name , reg) {
+*/
+	/*$scope.checkReg = function(name , reg) {
 
 		if (name.value) 
 		{
@@ -168,15 +168,13 @@ app.controller("mainCtrl" , function($scope)
 		}
 
 
-	} ;
+	} ;*/
 
-	$scope.confirmEmail = function(mail , mconfirm)
+/*	$scope.confirm = function(mail , mconfirm)
 	{
-		//if (name.value)
-		//{
-			console.log(mail);
-			if(mail.value)
-			{
+
+		if(mail.value)
+		{
 			if (mail.value == mconfirm.value )
 			{
 				mail.error.bool = false ;
@@ -187,59 +185,52 @@ app.controller("mainCtrl" , function($scope)
 				mail.error.bool = true ;
 				mail.error.msg = "they are not matched" ;
 			}
-		} else {
+		} 
+		else {
 			mail.error.bool = false ;
-				mail.error.msg = "" ;
+			mail.error.msg = "" ;
 		}
-		/*}
-		else 
-	{
-			name.error.bool = false ;
-			name.error.msg = "" ;
-			console.log(name.value);
-		}*/
-	};
+		
+	};*/
 
 
 
 	//---------------Watchers---------------//
 	$scope.$watch ('customer.firstName' , function(val) 
 	{ 
-		$scope.validateInput (val, regex.name);
+		fact1.validateInput (val, regex.name);
 		
 	}, true);
 
 	$scope.$watch ('customer.lastName' , function(val) 
 	{ 
-		$scope.validateInput (val,regex.name);
+		fact1.validateInput (val,regex.name);
 		
 	}, true);
 
 	$scope.$watch ('customer.location' , function(val) 
 	{ 
-		$scope.validateInput (val,regex.location);
+		fact1.validateInput (val,regex.location);
 		
 	}, true);
 
 	$scope.$watch ('customer.email' , function(val) 
 	{ 
-		$scope.checkReg (val,regex.email);
+		fact1.checkReg (val,regex.email);
 		
 	}, true);
 
 	$scope.$watch ('customer.mobileNumber' , function(val) 
 	{ 
-		$scope.checkReg (val,regex.mobile);
+		fact1.checkReg (val,regex.mobile);
 		
 	}, true);
 
-	$scope.$watch ('customer.email2' , function(val)
+	$scope.$watch ('customer.confirmEmail' , function(val)
 	{
-		// if(customer.confirm) {
-		// 	$scope.confirm (customer.confirm , customer.email) ;
-		// }
-		console.log(customer.email2);
-		
+
+		 	fact1.confirm (val , customer.email) ;
+
 	},true) ;
 
 
