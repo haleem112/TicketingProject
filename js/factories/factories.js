@@ -1,7 +1,7 @@
  var fact = app.factory('fact', function(){
 
 	return {
-		btn_disabled : function (customer)
+		formBtn_disabled : function (customer)
         {
                 var finish = customer.firstName.value && !customer.firstName.error.bool&&
                 customer.lastName.value && !customer.lastName.error.bool &&
@@ -12,9 +12,15 @@
                 customer.confirmEmail.value && !customer.confirmEmail.error.bool &&
                 customer.eventType.value && !customer.eventType.error.bool &&
                 customer.inventory.value && !customer.inventory.error.bool&&
-                customer.companyName.value && !customer.companyName.error.bool;
+                customer.companyName.value && !customer.companyName.error.bool&&
+                (customer.events.length !=0);
 
     return !finish ;
+        } ,
+
+        eventBtn_disabled : function (location)
+        {
+        	return !(location.value && !location.error.bool) ;
         } ,
 
 		create : function (customer , user)
@@ -24,11 +30,10 @@
 			user.mobileNumber = customer.mobileNumber.value ;
 			user.email        = customer.email.value ;
 			user.eventTitle   = customer.eventTitle.value ;
-			user.location     = customer.location.value ;
 			user.eventType    = customer.eventType.value ;
 			user.inventory    = customer.inventory.value ;
 			user.companyName  = customer.companyName.value;
-
+			user.events = customer.events;
 			console.log(user) ;
 		} ,
 
@@ -156,7 +161,21 @@
 				name.error.length_msg = "" ;
 			}
 
-		}//End of function
+		},
+
+		addEvent : function (startdate, enddate ,events, eventLocation) //events == user.events
+		{
+			var element = {}
+
+			//element.location = location ;
+			element.startd = startdate ;
+			element.endd = enddate;
+			element.eventLocation = eventLocation;
+			//element.end =end ;
+
+			events.push(element) ;
+			console.log(events) ;
+		}
 	};
 });
 

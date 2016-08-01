@@ -12,8 +12,18 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<!-- Latest compiled JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<!--angularstrap-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-strap/2.3.9/angular-strap.compat.js"></script>
 		<!--AngularJS-->
 		<script type="text/javascript" src="js/app.js"></script>
+
+
+		<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.js"></script> 
+		<script src="js/assest.js"></script>
+		
+
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdn.rawgit.com/zhaber/datetimepicker/master/datetimepicker.css" type="text/css" rel="stylesheet">  
 		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 		<style type="text/css">
 		h1{
@@ -68,9 +78,9 @@
 							<label class="control-label col-xs-3" for="mob">Mobile Number:</label>
 							<div class="col-xs-6">
 								<div class="input-group">
-                             <div class="input-group-addon">+20</div>
-								<input type="text" class="form-control" id="mob" placeholder="Mobile Number" ng-model="customer.mobileNumber.value"  required>
-							</div>
+									<div class="input-group-addon">+20</div>
+									<input type="text" class="form-control" id="mob" placeholder="Mobile Number" ng-model="customer.mobileNumber.value"  required>
+								</div>
 								<span id="helpBlock" class="help-block error" ng-show = "customer.mobileNumber.error.bool"><div class = "alert alert-danger">{{customer.mobileNumber.error.emailmobilereg_msg}}</div></span>
 
 							</div>
@@ -108,73 +118,145 @@
 							</div>
 						</div>
 						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->		
+						
+						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+						<!-- Radio Buttons for The Type Section -->
+						<div class="form-group" >
+							<label class="control-label col-xs-3">Type: </label>
+							<div class="col-xs-2">
+								<label class="radio-inline">
+									<input type="radio" name="type" value="Single" ng-model="customer.eventType.value" required > Single Event
+								</label>
+							</div>
+							<div class="col-xs-2">
+								<label class="radio-inline">
+									<input type="radio" name="type" value="Multiple" ng-model="customer.eventType.value" required> Multiple Event 
+								</label>
+							</div>
+							<div class="col-xs-2">
+								<label class="radio-inline">
+									<input type="radio" name="type" value="tour" ng-model="customer.eventType.value" required> Tournment
+								</label>
+							</div>
+						</div>
+
+						<!-- Radio Buttons for The Inventory Section -->
 						<div class="form-group">
-							<label class="control-label col-xs-3" for="location">Venue name and Location:</label>
-							<div class="col-xs-6">
-								<input type="text" class="form-control" id="location" placeholder="Venue name and Its Location"ng-model="customer.location.value" required>
-								<span id="helpBlock" class="help-block error" ng-show = "customer.location.error.bool ">
-									<div class = "alert alert-danger">{{customer.location.error.length_msg}} {{customer.location.error.nameregex_msg}}</div></span>
-								</div>
+							<label class="control-label col-xs-3">Inventory:</label>
+							<div class="col-xs-2">
+								<label class="radio-inline">
+									<input type="radio" name="inventory" value="general" ng-model="customer.inventory.value" required> General Admission
+								</label>
 							</div>
-							<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-							<!-- Radio Buttons for The Type Section -->
-							<div class="form-group" >
-								<label class="control-label col-xs-3">Type: </label>
-								<div class="col-xs-2">
-									<label class="radio-inline">
-										<input type="radio" name="type" value="Single" ng-model="customer.eventType.value" required > Single Event
-									</label>
+							<div class="col-xs-2">
+								<label class="radio-inline">
+									<input type="radio" name="inventory" value="reserved" ng-model="customer.inventory.value"> Reserved Admission 
+								</label>
+							</div>
+							<div class="col-xs-2">
+								<label class="radio-inline">
+									<input type="radio" name="inventory" value="gneralnreserved" ng-model="customer.inventory.value"> General Admission + Reserved Admission 
+								</label>
+							</div>
+						</div>
+						<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+						<div class="panel panel-primary">
+							<div class="panel-body ">
+
+								<div class="form-group row">
+									<label class="control-label col-xs-3" for="location">Venue name and Location:</label>
+									<div class="col-xs-6">
+										<input type="text" class="form-control" id="location" placeholder="Venue name and Its Location"ng-model="customer.location.value" required>
+										<span id="helpBlock" class="help-block error" ng-show = "customer.location.error.bool ">
+											<div class = "alert alert-danger">{{customer.location.error.length_msg}} {{customer.location.error.nameregex_msg}}</div></span>
+										</div>
+									</div>
+
+									<div  class="form-group" name="demo"> 
+
+										<label class="control-label">Start date and time :</label>
+										<datetimepicker 
+
+										hour-step="hourStep" 
+										minute-step="minuteStep"
+										ng-model="date1" 
+										show-meridian="showMeridian" 
+										date-format="{{format}}" 
+										date-options="dateOptions"
+										date-disabled="disabled(date1, mode)" 
+										datepicker-append-to-body="false"
+										readonly-date="false"
+										disabled-date="false"
+										hidden-time="false"
+										hidden-date="false" 
+										name="datetimepicker"
+										show-spinners="true"
+										readonly-time="false"
+										date-opened="dateOpened1"
+										show-button-bar="false"
+										>
+										<!-- Use date-ng-click="open($event, opened)" to override date ng-click -->
+									</datetimepicker>
+									
 								</div>
-								<div class="col-xs-2">
-									<label class="radio-inline">
-										<input type="radio" name="type" value="Multiple" ng-model="customer.eventType.value" required> Multiple Event 
-									</label>
-								</div>
-								<div class="col-xs-2">
-									<label class="radio-inline">
-										<input type="radio" name="type" value="tour" ng-model="customer.eventType.value" required> Tournment
-									</label>
-								</div>
+
+								<!--//////////////////////End Date /////////////////////////////// -->
+								<div  class="form-group" name="demo"> 
+
+									<label class="control-label">End date and time :</label>
+									<datetimepicker 
+									hour-step="hourStep" 
+									minute-step="minuteStep"
+									ng-model="date2" 
+									show-meridian="showMeridian" 
+									date-format="{{format}}" 
+									date-options="dateOptions"
+									date-disabled="disabled(date2, mode)" 
+									datepicker-append-to-body="false"
+									readonly-date="false"
+									disabled-date="false"
+									hidden-time="false"
+									hidden-date="false" 
+									name="datetimepicker"
+									show-spinners="true"
+									readonly-time="false"
+									date-opened="dateOpened2"
+									show-button-bar="false"
+									>
+									<!-- Use date-ng-click="open($event, opened)" to override date ng-click -->
+								</datetimepicker>
+
 							</div>
 
-							<!-- Radio Buttons for The Inventory Section -->
-							<div class="form-group">
-								<label class="control-label col-xs-3">Inventory:</label>
-								<div class="col-xs-2">
-									<label class="radio-inline">
-										<input type="radio" name="inventory" value="general" ng-model="customer.inventory.value" required> General Admission
-									</label>
-								</div>
-								<div class="col-xs-2">
-									<label class="radio-inline">
-										<input type="radio" name="inventory" value="reserved" ng-model="customer.inventory.value"> Reserved Admission 
-									</label>
-								</div>
-								<div class="col-xs-2">
-									<label class="radio-inline">
-										<input type="radio" name="inventory" value="gneralnreserved" ng-model="customer.inventory.value"> General Admission + Reserved Admission 
-									</label>
-								</div>
+							<div>
+								<input type="submit" class="btn btn-primary" value="Submit" ng-click ="add()" ng-disabled = "eventDone()">
 							</div>
-							<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-							<div class="form-group">
-								<div class="col-xs-offset-3 col-xs-9">
-									<input type="submit" class="btn btn-primary" value="Submit" ng-click ="clicked()" ng-disabled = "done()">
 
-									<input type="reset" class="btn btn-default" value="Reset" >
-								</div>
-							</div>
-						</form>
+						</div>
 					</div>
-				</div>
+					
 
+
+
+					<div class="form-group">
+						<div class="col-xs-offset-3 col-xs-9">
+							<input type="submit" class="btn btn-primary" value="Submit" ng-click ="clicked()" ng-disabled = "formDone()">
+
+							<input type="reset" class="btn btn-default" value="Reset" >
+						</div>
+					</div>
+				</form>
 			</div>
-			<!-- app.JS -- >
+		</div>
 
-			<!-- main controller -->
-			<script type="text/javascript" src="js/factories/factories.js"></script>
-			<script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
+	</div>
+	<!-- app.JS -- >
 
-		</body>
-		</html>
+	<!-- main controller -->
+	<script type="text/javascript" src="js/factories/factories.js"></script>
+	<script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
+
+</body>
+</html>
 
