@@ -2,6 +2,8 @@ var fact = app.factory('fact', function(){
 
 	return {
 		//---------------------------------Form Submit Button------------------------------------//
+
+		
 		formBtn_disabled : function (customer)
         {
                 var finish = customer.firstName.value && !customer.firstName.error.bool&&

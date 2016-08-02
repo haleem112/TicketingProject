@@ -4,15 +4,15 @@
 //--Start and End Objects--------------------------------------------------//
 //--Object to be sent (User)-----------------------------------------------//
 //--Customer Object--------------------------------------------------------//
-//--Regex Object-----------------------------------------------------------//
 //--Function clicked -> calls function copyCustomerToUser------------------//
 //--Formdone function calls formBtn_disabled(customer)---------------------//
 //--Eventdone function calls eventBtn_disabled(customer.location)----------//
 //--Watchers---------------------------------------------------------------//
 //--Add event--------------------------------------------------------------//
 
-app.controller("mainCtrl" , function($scope , fact ,$timeout)
+app.controller("mainCtrl" , function($scope , fact ,$timeout,regex)
 {
+$scope.regex = regex;
 
 //-----------------------Object to be sent-----------------------// 
 var user = {
@@ -108,8 +108,8 @@ customer.events = [];
 //----------------------------------------------------------//
 //-----------------------Regex Object-----------------------//
 //----------------------------------------------------------//
-var regex = $scope.regex = {} ;
-regex =
+//var regex = $scope.regex = {} ;
+/*regex =
 { 
 	name :
 	{
@@ -135,7 +135,7 @@ regex =
 		exp :  /^[1]+[0-2][-]*(\d{4})[-]*(\d{4})$/ ,
 		error : "Invalid mobile number"
 	}
-};
+};*/
 
 //-------------Clicked copies the values of customer object to user object-----------------//
 $scope.clicked = function()
