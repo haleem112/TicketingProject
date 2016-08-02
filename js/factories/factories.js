@@ -1,6 +1,7 @@
- var fact = app.factory('fact', function(){
+var fact = app.factory('fact', function(){
 
 	return {
+		//---------------------------------Form Submit Button------------------------------------//
 		formBtn_disabled : function (customer)
         {
                 var finish = customer.firstName.value && !customer.firstName.error.bool&&
@@ -17,13 +18,16 @@
 
     return !finish ;
         } ,
-
-        eventBtn_disabled : function (location)
+   //---------------------------------Events Submit Button------------------------------------//
+        eventBtn_disabled : function (location , date)
         {
-        	return !(location.value && !location.error.bool) ;
-        } ,
+        	 var finish = location.value && !location.error.bool && date.start.value && !date.start.error.bool
+        	 && date.start.value && !date.start.error.bool
 
-		create : function (customer , user)
+        	return !(finish) ;
+        } ,
+   //---------------------------------Creates object to be sent------------------------------------//
+		copyCustomerToUser : function (customer , user)
 		{
 			user.firstName    = customer.firstName.value ;
 			user.lastName     =customer.lastName.value ;
@@ -36,15 +40,13 @@
 			user.events = customer.events;
 			console.log(user) ;
 		} ,
-
+//---------------------------------Validate Input------------------------------------//
 		validateInput : function (name,reg) 
 		{
-
 			if (name.value) 
 			{
 				var test = reg.exp.test(name.value) ;
 				var length = name.value.length;
-
 
 				if(test)
 				{
@@ -57,7 +59,7 @@
 					name.error.nameregex_msg =reg.error;
 				}
 
-
+			//----------------------------------------------------------------//
 				if (length >0 && length < reg.min)
 				{
 					name.error.bool = true;
@@ -75,7 +77,6 @@
 					name.error.length_msg = "" ;
 				}
 
-
 			}
 			else
 			{
@@ -83,6 +84,8 @@
 			}
 		},
 
+	
+//---------------------------------Check Regex Function------------------------------------//
 		checkReg : function (name , reg)
 		{
 			if (name.value) 
@@ -108,7 +111,7 @@
 			}
 
 		} ,
-
+//---------------------------------Confirm E-mail Function------------------------------------//
 		confirm: function (confirm_mail, mail)
 		{
 			if(confirm_mail.value)
@@ -130,7 +133,7 @@
 			}
 
 		},
-
+//---------------------------------Check Length Function------------------------------------//
 		check_Length: function(name, reg)
 		{
 			if (name.value) 
@@ -162,20 +165,49 @@
 			}
 
 		},
-
+//---------------------------------Add input to element object------------------------------------//
 		addEvent : function (startdate, enddate ,events, eventLocation) //events == user.events
 		{
 			var element = {}
 
-			//element.location = location ;
-			element.startd = startdate ;
-			element.endd = enddate;
-			element.eventLocation = eventLocation;
-			//element.end =end ;
+            element.eventLocation = eventLocation;
+            
+            element.start = {
+                 fullMilliDate : startdate.setMilliseconds(1),
+                 splitedTime : startdate.getHours() + ":" +startdate.getMinutes(),
+                 splitedDate : startdate.getDate()+"-"+(startdate.getMonth()+1)+"-"+startdate.getFullYear()
+            };
+        
+            element.end = {
+                 fullMilliDate : enddate.setMilliseconds(1),
+                 splitedTime : enddate.getHours() + ":" +enddate.getMinutes(),
+                 splitedDate : enddate.getDate()+"-"+(enddate.getMonth()+1)+"-"+enddate.getFullYear()
+            };
+            
+            events.push(element) ;
 
-			events.push(element) ;
-			console.log(events) ;
-		}
+            console.log(events);
+		} ,
+
+		dateValidation : function (val , date)
+		{
+			if(!val) 
+			{
+				date.error.bool = true ;
+				date.error.msg = "invalid date" ;
+			}
+			else
+			{
+				date.error.bool = false ;
+				date.error.msg = "" ;
+			}
+		} ,
+
+
+removeElement : function(todo ,array)
+        {
+            array.splice(array.indexOf(todo), 1);
+        }
 	};
 });
 

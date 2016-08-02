@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Ticket Your Event</title>
 
+<script src="https://use.fontawesome.com/13cbefee13.js"></script>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<!--Latest compiled and minified CSS-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -180,11 +181,11 @@
 
 										hour-step="hourStep" 
 										minute-step="minuteStep"
-										ng-model="date1" 
+										ng-model="date.start.value" 
 										show-meridian="showMeridian" 
 										date-format="{{format}}" 
 										date-options="dateOptions"
-										date-disabled="disabled(date1, mode)" 
+										date-disabled="disabled(date.start.value, mode)" 
 										datepicker-append-to-body="false"
 										readonly-date="false"
 										disabled-date="false"
@@ -198,7 +199,10 @@
 										>
 										<!-- Use date-ng-click="open($event, opened)" to override date ng-click -->
 									</datetimepicker>
-									
+								<span id="helpBlock" class="help-block error" ng-show = "date.start.error.bool ">
+								<div class = "alert alert-danger">{{date.start.error.msg}}</div></span>
+
+
 								</div>
 
 								<!--//////////////////////End Date /////////////////////////////// -->
@@ -208,11 +212,11 @@
 									<datetimepicker 
 									hour-step="hourStep" 
 									minute-step="minuteStep"
-									ng-model="date2" 
+									ng-model="date.end.value" 
 									show-meridian="showMeridian" 
 									date-format="{{format}}" 
 									date-options="dateOptions"
-									date-disabled="disabled(date2, mode)" 
+									date-disabled="disabled(date.end.value, mode)" 
 									datepicker-append-to-body="false"
 									readonly-date="false"
 									disabled-date="false"
@@ -224,10 +228,59 @@
 									date-opened="dateOpened2"
 									show-button-bar="false"
 									>
-									<!-- Use date-ng-click="open($event, opened)" to override date ng-click -->
 								</datetimepicker>
+								<span id="helpBlock" class="help-block error" ng-show = "date.end.error.bool ">
+								<div class = "alert alert-danger">{{date.end.error.msg}}</div></span>
 
 							</div>
+							<table class="table" ng-show = "customer.events.length != 0">
+   <thead>
+     <tr>
+       <th>location</th>
+       <th>Event starts</th>
+       <th>Event ends</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr class="success" ng-repeat = "x in customer.events" >
+       <td>{{x.eventLocation}}</td>
+       <td>
+       	<table class="table">
+       		<thead>
+       		<tr>
+       			<th>Date</th>
+       			<th>Time</th>
+       		</tr>
+       	</thead>
+       	<tbody>
+       		<tr>
+       			<td>{{x.start.splitedDate}}</td>
+       			<td>{{x.start.splitedTime}}</td>
+       		</tr>
+       	</tbody>
+       	</table>
+       </td>
+       <td>
+       	       	<table class="table">
+       		<thead>
+       		<tr>
+       			<th>Date</th>
+       			<th>Time</th>
+       		</tr>
+       	</thead>
+       	<tbody>
+       		<tr>
+       			<td>{{x.end.splitedDate}}</td>
+       			<td>{{x.end.splitedTime}}</td>
+       		</tr>
+       	</tbody>
+       	</table>
+       </td>
+       <td><i class="fa fa-times" aria-hidden="true" ng-click ="remove(x)"></i></td>
+       <hr>
+     </tr>
+   </tbody>
+ </table>
 
 							<div>
 								<input type="submit" class="btn btn-primary" value="Submit" ng-click ="add()" ng-disabled = "eventDone()">
